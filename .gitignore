@@ -1,0 +1,6 @@
+# JetBrains
+/.idea/
+
+# Keep app folder, but remove contents except for .gitkeep
+/app/*
+!/app/.gitkeep
