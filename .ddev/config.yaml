@@ -1,36 +1,38 @@
-APIVersion: v1.6.0
-name: teampasswordmanager
+APIVersion: v1.8.0
+name: tpm-ddev
 type: php
 docroot: app
-php_version: "7.1"
+php_version: "7.2"
 webserver_type: nginx-fpm
 router_http_port: "80"
 router_https_port: "443"
 xdebug_enabled: false
-additional_hostnames: []
+additional_hostnames:
+- tpm
 additional_fqdns: []
 mariadb_version: "10.2"
-webcache_enabled: false
-nfs_mount_enabled: false
+nfs_mount_enabled: true
 provider: default
 hooks:
   post-start:
-  - exec: bash -c "sudo apt-get update && sudo apt-get install -y php7.1-ldap"
-  - exec: bash -c "cd /tmp && wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz && tar xfz ioncube_loaders_lin_x86-64.tar.gz"
-  - exec: bash -c "export extdir=\"$(php -i | grep extension_dir | sed -n -e 's/^extension_dir => .\+\? => //p')\""
-  - exec: bash -c "sudo cp /tmp/ioncube/ioncube_loader_lin_7.1.so $extdir/ioncube_loader_lin_7.1.so"
-  - exec: bash -c "grep -q \"zend_extension = $extdir/ioncube_loader_lin_7.1.so\" /etc/php/7.1/fpm/php.ini || sed -i '1 i\zend_extension = '$extdir'/ioncube_loader_lin_7.1.so' /etc/php/7.1/fpm/php.ini"
+  - exec: bash -c "cd /tmp && wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
+      && tar xfz ioncube_loaders_lin_x86-64.tar.gz"
+  - exec: bash -c "export extdir=\"$(php -i | grep extension_dir | sed -n -e 's/^extension_dir
+      => .\+\? => //p')\""
+  - exec: bash -c "sudo cp /tmp/ioncube/ioncube_loader_lin_7.2.so $extdir/ioncube_loader_lin_7.2.so"
+  - exec: bash -c "grep -q \"zend_extension = $extdir/ioncube_loader_lin_7.2.so\"
+      /etc/php/7.2/fpm/php.ini || sed -i '1 i\zend_extension = '$extdir'/ioncube_loader_lin_7.2.so'
+      /etc/php/7.2/fpm/php.ini"
   - exec: bash -c "killall -HUP php-fpm"
-omit_containers:
-- dba
-additional_hostnames:
-- tpm
+omit_containers: [dba]
+webimage_extra_packages: [php7.2-ldap]
 
-# This config.yaml was created with ddev version v1.6.0 
-# webimage: drud/ddev-webserver:v1.6.0
-# dbimage: drud/ddev-dbserver:v1.6.0-10.2
-# dbaimage: drud/phpmyadmin:v1.6.0
-# bgsyncimage: drud/ddev-bgsync:v1.6.0
+
+# This config.yaml was created with ddev version v1.8.0 
+# webimage: drud/ddev-webserver:v1.8.0
+# dbimage: drud/ddev-dbserver:v1.8.0-10.2
+# dbaimage: drud/phpmyadmin:v1.8.0
+# bgsyncimage: drud/ddev-bgsync:v1.8.0
 # However we do not recommend explicitly wiring these images into the
 # config.yaml as they may break future versions of ddev.
 # You can update this config.yaml using 'ddev config'.
@@ -90,6 +92,37 @@ additional_hostnames:
 # Note that these containers can also be omitted globally in the 
 # ~/.ddev/global_config.yaml or with the "ddev config global" command.
 
+# nfs_mount_enabled: false
+# Great performance improvement but requires host configuration first.
+# See https://ddev.readthedocs.io/en/stable/users/performance/#using-nfs-to-mount-the-project-into-the-container
+
+# webcache_enabled: false (deprecated)
+# Was only for macOS, but now deprecated. 
+# See https://ddev.readthedocs.io/en/stable/users/performance/#using-webcache_enabled-to-cache-the-project-directory
+
+# host_https_port: "59002"
+# The host port binding for https can be explicitly specified. It is
+# dynamic unless otherwise specified.
+# This is not used by most people, most people use the *router* instead
+# of the localhost port.
+
+# host_webserver_port: "59001"
+# The host port binding for the ddev-webserver can be explicitly specified. It is
+# dynamic unless otherwise specified.
+# This is not used by most people, most people use the *router* instead
+# of the localhost port.
+
+# host_db_port: "59002"
+# The host port binding for the ddev-dbserver can be explicitly specified. It is dynamic
+# unless explicitly specified.
+
+# webimage_extra_packages: [php-yaml, php7.3-ldap]
+# Extra Debian packages that are needed in the webimage can be added here
+# This is ignored if a free-form .ddev/web-build/Dockerfile is provided
+
+# dbimage_extra_packages: [telnet,netcat]
+# Extra Debian packages that are needed in the dbimage can be added here
+# This is ignored if a free-form .ddev/db-build/Dockerfile is provided
 
 # provider: default # Currently either "default" or "pantheon"
 #

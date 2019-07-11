@@ -1,0 +1,154 @@
+{
+  "name": "jfastnacht/tpm-ddev",
+  "description": "A repository for installing TeamPasswordManager.",
+  "type": "project",
+  "repositories": [
+    {
+      "type": "package",
+      "package": [
+        {
+          "name": "jfastnacht/tpm",
+          "version": "2.0.1",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/teampasswordmanager_2.0.1.zip",
+            "type": "zip",
+            "shasum": "f6d2840526a442f525fbe08fdd52072c80527ab0"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm",
+          "version": "7.82.196",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/teampasswordmanager_7.82.196.zip",
+            "type": "zip",
+            "shasum": "62fced18518b98003e1dfb691b9551cc321265f3"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm",
+          "version": "7.84.198",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/teampasswordmanager_7.84.198.zip",
+            "type": "zip",
+            "shasum": "c6cb64cdbebe41e7a4018f7995d1bee3718ceebf"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm",
+          "version": "7.93.204",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/teampasswordmanager_7.93.204.zip",
+            "type": "zip",
+            "shasum": "08c8879bb5c0d1f2212f362cb35b1bb325f2d911"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm-lang-de-de",
+          "version": "6",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/languages/de_6.zip",
+            "type": "zip",
+            "shasum": "4fe00f4f45a9c4a9a89e284e1383e4d423acea59"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm-lang-de-de",
+          "version": "7",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/languages/de_7.zip",
+            "type": "zip",
+            "shasum": "7e8ee99d0db863aabb5c5053bef3aecc40fe7390"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm-lang-es-es",
+          "version": "6",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/languages/es_ES_6.zip",
+            "type": "zip",
+            "shasum": "40a8294f1d3e0a44934f84dad7cc2644282449da"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm-lang-es-es",
+          "version": "7",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/languages/es_ES_7.zip",
+            "type": "zip",
+            "shasum": "b12fe5510305c770ca5ec4c6c98e9a3cf72f3758"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm-lang-ru-ru",
+          "version": "6",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/languages/ru_6.zip",
+            "type": "zip",
+            "shasum": "b7167ffd1505551fff14f7a92e3dd27a3b4690da"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm-lang-ru-ru",
+          "version": "7",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/languages/ru_7.zip",
+            "type": "zip",
+            "shasum": "3eb3ec70c17e516cc3f293992952191a097f468e"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm-lang-pt-br",
+          "version": "6",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/languages/pt_BR_6.zip",
+            "type": "zip",
+            "shasum": "03b7b9807b1635e073ca870231ab890e9631e41e"
+          }
+        },
+        {
+          "name": "jfastnacht/tpm-lang-pt-br",
+          "version": "7",
+          "type": "project",
+          "dist": {
+            "url": "https://teampasswordmanager.com/assets/download/languages/pt_BR_7.zip",
+            "type": "zip",
+            "shasum": "cd201665a01d43fa83363b948fb9d9f464f622e5"
+          }
+        }
+      ]
+    }
+  ],
+  "require": {
+    "jfastnacht/tpm": "7.84.198",
+    "jfastnacht/tpm-lang-de-de": "7",
+    "jfastnacht/tpm-lang-es-es": "7",
+    "jfastnacht/tpm-lang-ru-ru": "7",
+    "jfastnacht/tpm-lang-pt-br": "7",
+    "cpsit/setup-helper": "^1.2"
+  },
+  "extra": {
+    "setup-helper": [
+      {
+        "copy": {
+          "vendor/jfastnacht/tpm/": "app",
+          "vendor/jfastnacht/tpm-lang-de-de/": "app/secure/wmm/language/de-de",
+          "vendor/jfastnacht/tpm-lang-es-es/": "app/secure/wmm/language/es-es",
+          "vendor/jfastnacht/tpm-lang-ru-ru/": "app/secure/wmm/language/ru-ru",
+          "vendor/jfastnacht/tpm-lang-pt-br/": "app/secure/wmm/language/pt-br"
+
+        }
+      }
+    ]
+  }
+}
